@@ -2,7 +2,7 @@
 #include "MyContainer.hpp"
 
 
-using namespace ariel;
+using namespace Container;
 
 int main() {
     MyContainer<int> container;
