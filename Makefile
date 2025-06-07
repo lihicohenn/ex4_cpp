@@ -25,9 +25,13 @@ demo: $(DEMO_TARGET)
 
 test: $(TEST_TARGET)
 	./$(TEST_TARGET)
-
-valgrind: $(TEST_TARGET)
+	
+valgrind: $(TARGET) $(TEST_TARGET)
+	$(VALGRIND) ./$(TARGET)
 	$(VALGRIND) ./$(TEST_TARGET)
+
+Main: Main.cpp MyContainer.cpp
+	$(CXX) $(CXXFLAGS) -o $(TARGET) Main.cpp MyContainer.cpp
 
 clean:
 	rm -f $(TARGET) $(TEST_TARGET) $(DEMO_TARGET) *.o

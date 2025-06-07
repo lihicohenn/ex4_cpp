@@ -96,3 +96,4 @@ template std::ostream& operator<<<int>(std::ostream&, const MyContainer<int>&);
 // Explicit template instantiation for int type
 // This is necessary to ensure that the template class is instantiated for int type - otherwise the compiler may not generate the code for this type, leading to linker errors when used in other translation units.
 template class Container::MyContainer<int>;
+ 
