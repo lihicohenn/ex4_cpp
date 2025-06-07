@@ -90,7 +90,9 @@ namespace Container {
     MiddleOutOrder<T> MyContainer<T>::end_middle_out_order() const {
         return MiddleOutOrder<T>(elements, true);
     }
+template std::ostream& operator<<<int>(std::ostream&, const MyContainer<int>&);
 
 }
+// Explicit template instantiation for int type
+// This is necessary to ensure that the template class is instantiated for int type - otherwise the compiler may not generate the code for this type, leading to linker errors when used in other translation units.
 template class Container::MyContainer<int>;
-template std::ostream& Container::operator<< <int>(std::ostream&, const Container::MyContainer<int>&);

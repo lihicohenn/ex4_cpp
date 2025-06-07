@@ -16,7 +16,6 @@ private:
 
 public:
     // Constructor
-
     SideCrossOrder(const vector<T>& elements, bool end = false)
     {
         vector<T> temp = elements; // create a copy of the vector to sort him

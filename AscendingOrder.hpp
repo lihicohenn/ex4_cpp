@@ -38,9 +38,11 @@ public:
         return index != other.index;
     }
 
+    // Equality operator
     bool operator==(const AscendingOrder& other) const {
         return index == other.index;
     }
+    // Begin method
     AscendingOrder begin() const {
         return AscendingOrder(sorted, false);
     }

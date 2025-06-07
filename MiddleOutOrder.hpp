@@ -54,6 +54,7 @@ public:
         return index != other.index;
     }
 
+    // Equality operator
     bool operator==(const MiddleOutOrder& other) const {
         return index == other.index;
     }

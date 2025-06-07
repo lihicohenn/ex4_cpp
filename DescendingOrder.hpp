@@ -15,11 +15,13 @@ private:
     size_t index;
 
 public:
-// Constructor
+    // Constructor
     DescendingOrder(const vector<T>& elements, bool end = false)
         : sorted(elements), index(end ? elements.size() : 0)
     {
-        sort(sorted.begin(), sorted.end(), greater<T>()); // here we sort the elements in descending order
+        sort(sorted.begin(), sorted.end(), [](const T& a, const T& b) {
+            return a > b; // descending order
+        });
     }
 
     // Dereference operator
@@ -38,10 +40,12 @@ public:
         return index != other.index;
     }
 
+    // Equality operator
     bool operator==(const DescendingOrder& other) const {
         return index == other.index;
     }
 
+    // Begin method
     DescendingOrder begin() const {
         return DescendingOrder(sorted, false);
     }
@@ -53,4 +57,3 @@ public:
 };
 
 }
- 
