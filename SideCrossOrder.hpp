@@ -1,3 +1,4 @@
+//lihicohen1123@gmail.com
 #pragma once 
 #include <vector>
 #include <algorithm>
@@ -57,6 +58,15 @@ public:
 
     bool operator==(const SideCrossOrder& other) const {
         return index == other.index;
+    }
+    // Begin method
+    SideCrossOrder begin() const {
+        return SideCrossOrder(sorted, false);
+    }
+
+    // End method
+    SideCrossOrder end() const {
+        return SideCrossOrder(sorted, true);
     }
 };
 

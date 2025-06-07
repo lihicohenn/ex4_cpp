@@ -92,3 +92,5 @@ namespace Container {
     }
 
 }
+template class Container::MyContainer<int>;
+template std::ostream& Container::operator<< <int>(std::ostream&, const Container::MyContainer<int>&);

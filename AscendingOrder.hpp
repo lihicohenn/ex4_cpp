@@ -1,3 +1,4 @@
+//lihicohen1123@gmail.com
 #pragma once
 #include <vector>
 #include <algorithm>
@@ -15,8 +16,8 @@ private:
 
 public:
     // Constructor
-    AscendingOrder(const MyContainer<T>& container, bool end = false)
-        : sorted(container.getElements()), index(end ? container.size() : 0)
+    AscendingOrder(const vector<T>& elements, bool end = false)
+        : sorted(elements), index(end ? elements.size() : 0)
     {
         sort(sorted.begin(), sorted.end()); // here we sort the elements in ascending order
     }
@@ -39,6 +40,14 @@ public:
 
     bool operator==(const AscendingOrder& other) const {
         return index == other.index;
+    }
+    AscendingOrder begin() const {
+        return AscendingOrder(sorted, false);
+    }
+
+    // end method
+    AscendingOrder end() const {
+        return AscendingOrder(sorted, true);
     }
 };
 

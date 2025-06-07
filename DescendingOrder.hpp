@@ -1,3 +1,4 @@
+//lihicohen1123@gmail.com
 #pragma once
 #include <vector>
 #include <algorithm>
@@ -10,14 +11,13 @@ template <typename T>
 
 class DescendingOrder {
 private:
-
     vector<T> sorted;
     size_t index;
 
 public:
 // Constructor
-    DescendingOrder(const MyContainer<T>& container, bool end = false)
-        : sorted(container.getElements()), index(end ? container.size() : 0)
+    DescendingOrder(const vector<T>& elements, bool end = false)
+        : sorted(elements), index(end ? elements.size() : 0)
     {
         sort(sorted.begin(), sorted.end(), greater<T>()); // here we sort the elements in descending order
     }
@@ -40,6 +40,15 @@ public:
 
     bool operator==(const DescendingOrder& other) const {
         return index == other.index;
+    }
+
+    DescendingOrder begin() const {
+        return DescendingOrder(sorted, false);
+    }
+
+    // end method
+    DescendingOrder end() const {
+        return DescendingOrder(sorted, true);
     }
 };
 
