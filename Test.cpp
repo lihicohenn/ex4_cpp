@@ -167,3 +167,81 @@ TEST_CASE("MyContainer - Middle out order") {
     ++it;
     CHECK(it == container.end_middle_out_order());
 }
+TEST_CASE("MyContainer - Ascending order with double values") {
+    Container::MyContainer<double> cont;
+    cont.addElement(3.14);
+    cont.addElement(2.71);
+    cont.addElement(1.41);
+    cont.addElement(1.73);
+
+    std::vector<double> ascendingExpected = {1.41, 1.73, 2.71, 3.14};
+    std::vector<double> actualAscending;
+
+    for (auto it = cont.begin_ascending_order(); it != cont.end_ascending_order(); ++it) {
+        actualAscending.push_back(*it);
+    }
+    CHECK(actualAscending == ascendingExpected);
+
+    std::vector<double> crossExpected = {1.41, 3.14, 1.73, 2.71};
+    std::vector<double> actualCross;
+
+    for (auto it = cont.begin_side_cross_order(); it != cont.end_side_cross_order(); ++it) {
+        actualCross.push_back(*it);
+    }
+    CHECK(actualCross == crossExpected);
+}
+
+TEST_CASE("MyContainer - Descending order with double values") {
+    Container::MyContainer<double> cont;
+    cont.addElement(3.14);
+    cont.addElement(2.71);
+    cont.addElement(1.41);
+    cont.addElement(1.73);
+
+    std::vector<double> descendingExpected = {3.14, 2.71, 1.73, 1.41};
+    std::vector<double> actualDescending;
+
+    for (auto it = cont.begin_descending_order(); it != cont.end_descending_order(); ++it) {
+        actualDescending.push_back(*it);
+    }
+    CHECK(actualDescending == descendingExpected);
+}
+TEST_CASE("MyContainer - Side Cross Order with double values") {
+    Container::MyContainer<double> cont;
+    cont.addElement(3.14);
+    cont.addElement(2.71);
+    cont.addElement(1.41);
+    cont.addElement(1.73);
+
+    std::vector<double> sideCrossExpected = {1.41, 3.14, 1.73, 2.71};
+    std::vector<double> actualSideCross;
+
+    for (auto it = cont.begin_side_cross_order(); it != cont.end_side_cross_order(); ++it) {
+        actualSideCross.push_back(*it);
+    }
+    CHECK(actualSideCross == sideCrossExpected);
+}
+
+TEST_CASE("MyContainer with std::string values - Ascending and Side Cross Order") {
+    Container::MyContainer<std::string> cont;
+    cont.addElement("banana");
+    cont.addElement("apple");
+    cont.addElement("cherry");
+    cont.addElement("date");
+
+    std::vector<std::string> ascendingExpected = {"apple", "banana", "cherry", "date"};
+    std::vector<std::string> actualAscending;
+
+    for (auto it = cont.begin_ascending_order(); it != cont.end_ascending_order(); ++it) {
+        actualAscending.push_back(*it);
+    }
+    CHECK(actualAscending == ascendingExpected);
+
+    std::vector<std::string> crossExpected = {"apple", "date", "banana", "cherry"};
+    std::vector<std::string> actualCross;
+
+    for (auto it = cont.begin_side_cross_order(); it != cont.end_side_cross_order(); ++it) {
+        actualCross.push_back(*it);
+    }
+    CHECK(actualCross == crossExpected);
+}
