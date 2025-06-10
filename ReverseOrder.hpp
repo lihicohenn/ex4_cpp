@@ -38,6 +38,7 @@ public:
         return index != other.index;
     }
 
+    // Equality operator
     bool operator==(const ReverseOrder& other) const {
         return index == other.index;
     }
